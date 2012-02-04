@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = 'iformat'
   gem.require_paths = ['lib']
   gem.version       = IFormat::VERSION
+
+  gem.add_development_dependency 'minitest', ['>= 2.0.0']
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'turn'
 end
