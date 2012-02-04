@@ -4,9 +4,9 @@ require File.expand_path('../lib/iformat/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ['Karol Sarnacki']
   gem.email         = ['sodercober@gmail.com']
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ''
+  gem.description   = %q{A Ruby wrapper for the iFormat API.}
+  gem.summary       = %q{iFormat API wrapper}
+  gem.homepage      = 'https://github.com/sodercober/iformat'
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
