@@ -1,9 +1,11 @@
-# The iFormat Ruby Gem
+# The iFormat Ruby Gem [![Build Status](https://secure.travis-ci.org/sodercober/iformat.png?branch=master)][travis]
 A Ruby wrapper for the [iFormat](http://www.iformat.pl/) API.
 
 [iFormat](http://www.iformat.pl/) is a digital platform for publishers of electronic publications that offers digitalisation, conversion, file security and electronic distribution.
 
-## Installation
+[travis]: http://travis-ci.org/sodercober/iformat
+
+## <a name="installation"></a>Installation
 
 Add this line to your application's Gemfile:
 
@@ -17,11 +19,11 @@ Or install it yourself as:
 
     $ gem install iformat
 
-## Usage
+## <a name="usage"></a>Usage
 
 TODO: Write usage instructions here
 
-## Contributing
+## <a name="contributing"></a>Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
