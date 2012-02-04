@@ -45,4 +45,33 @@ describe IFormat do
     end
   end
 
+  describe '.configure' do
+    it 'sets the configuration in a block' do
+      IFormat.configure do |config|
+        config.wsdl     = 'http://example.com/wsdl.xml'
+        config.username = 'iFormat Username'
+        config.password = 'iFormat Password'
+      end
+
+      IFormat.wsdl.must_equal 'http://example.com/wsdl.xml'
+      IFormat.username.must_equal 'iFormat Username'
+      IFormat.password.must_equal 'iFormat Password'
+    end
+  end
+
+  describe '.options' do
+    it 'returns configuration as Hash' do
+      IFormat.configure do |config|
+        config.wsdl     = 'http://example.com/wsdl.xml'
+        config.username = 'iFormat Username'
+        config.password = 'iFormat Password'
+      end
+
+      options = IFormat.options
+      options[:wsdl].must_equal 'http://example.com/wsdl.xml'
+      options[:username].must_equal 'iFormat Username'
+      options[:password].must_equal 'iFormat Password'
+    end
+  end
+
 end
