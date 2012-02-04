@@ -46,6 +46,7 @@ module IFormat
       self.wsdl     = DEFAULT_WSDL
       self.username = DEFAULT_USERNAME
       self.password = DEFAULT_PASSWORD
+      self
     end
 
   end
