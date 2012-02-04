@@ -5,7 +5,19 @@ describe IFormat do
   after do
     IFormat.reset
   end
+  
+  describe '.respond_to?' do
+    it 'takes an optional argument' do
+      IFormat.respond_to?(:new, true).must_equal true
+    end
+  end
 
+  describe '.new' do
+    it 'returns an IFormat::Client' do
+      IFormat.new.must_be_instance_of IFormat::Client
+    end
+  end
+  
   describe '.wsdl' do
     it 'returns the default wsdl' do
       IFormat.wsdl.must_equal 'http://wsdl.iformat.pl/api.xml'
