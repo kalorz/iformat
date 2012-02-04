@@ -1,5 +1,7 @@
-require "iformat/version"
+require 'iformat/version'
+require 'iformat/config'
 
 module IFormat
-  # Your code goes here...
+  extend IFormat::Config
+
 end
