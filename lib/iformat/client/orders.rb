@@ -21,7 +21,9 @@ module IFormat
       end
 
       def get_orders_history_quantity
-        raise NotImplementedError
+        attrs = session_request(:get_orders_history_quantity)
+
+        attrs[:quantity].to_i
       end
 
     end
