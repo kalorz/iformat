@@ -15,6 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.version       = IFormat::VERSION
 
+  gem.add_runtime_dependency 'savon', ['~> 0.9']
+
   gem.add_development_dependency 'minitest', ['>= 2.0.0']
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'turn'
