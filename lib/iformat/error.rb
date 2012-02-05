@@ -21,7 +21,7 @@ module IFormat
 
     attr_reader :status
 
-    def initialize(message, status = 0)
+    def initialize(message, status = UNKNOWN_ERROR_STATUS)
       @status = status
       super(message)
     end
