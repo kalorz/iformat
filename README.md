@@ -1,9 +1,11 @@
-# The iFormat Ruby Gem [![Build Status](https://secure.travis-ci.org/sodercober/iformat.png?branch=master)][travis]
+# The iFormat Ruby Gem [![Build Status](https://secure.travis-ci.org/sodercober/iformat.png?branch=master)][travis] [![Dependency Status](https://gemnasium.com/sodercober/iformat.png?travis)][gemnasium]
 A Ruby wrapper for the [iFormat](http://www.iformat.pl/) API.
 
 [iFormat](http://www.iformat.pl/) is a digital platform for publishers of electronic publications that offers digitalisation, conversion, file security and electronic distribution.
 
 [travis]: http://travis-ci.org/sodercober/iformat
+[gemnasium]: https://gemnasium.com/sodercober/iformat
+
 
 ## <a name="installation"></a>Installation
 
