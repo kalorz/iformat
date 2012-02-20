@@ -13,7 +13,7 @@ describe IFormat::Client do
     end
 
     after do
-      IFormat.reset
+      IFormat::Configuration.instance.send(:reset!)
     end
 
     it 'inherits module configuration' do

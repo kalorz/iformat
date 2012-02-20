@@ -1,18 +1,17 @@
 require 'savon'
-require 'iformat/session'
+require 'iformat/configuration'
 require 'iformat/error'
 require 'iformat/error/bad_session_id'
+require 'iformat/session'
 
 module IFormat
 
   class Client
-    attr_accessor *IFormat::Config::VALID_OPTIONS_KEYS
+    attr_accessor *IFormat::Configuration::VALID_OPTIONS
 
     def initialize(options = {})
-      options = IFormat.options.merge(options)
-
-      IFormat::Config::VALID_OPTIONS_KEYS.each do |key|
-        instance_variable_set("@#{key}".to_sym, options[key])
+      IFormat::Configuration::VALID_OPTIONS.each do |key|
+        send("#{key}=", options.has_key?(key) ? options[key] : IFormat.config[key])
       end
     end
 

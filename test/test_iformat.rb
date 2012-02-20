@@ -3,87 +3,51 @@ require 'helper'
 describe IFormat do
 
   after do
-    IFormat.reset
+    IFormat::Configuration.instance.send(:reset!)
   end
   
-  describe '.respond_to?' do
+  describe '::respond_to?' do
     it 'takes an optional argument' do
       IFormat.respond_to?(:new, true).must_equal true
     end
   end
 
-  describe '.new' do
+  describe '::new' do
     it 'returns an IFormat::Client' do
       IFormat.new.must_be_instance_of IFormat::Client
     end
   end
-  
-  describe '.wsdl' do
-    it 'returns the default wsdl' do
-      IFormat.wsdl.must_equal 'http://wsdl.iformat.pl/api.xml'
-    end
-  end
 
-  describe '.wsdl=' do
-    it 'sets custom wsdl' do
-      IFormat.wsdl = 'http://example.com/wsdl.xml'
-      IFormat.wsdl.must_equal 'http://example.com/wsdl.xml'
-    end
-  end
+  describe '::configure' do
 
-  describe '.username' do
-    it 'returns the default username' do
-      IFormat.username.must_equal nil
-    end
-  end
+    describe 'with configuration block' do
 
-  describe '.username=' do
-    it 'sets the username' do
-      IFormat.username = 'iFormat Username'
-      IFormat.username.must_equal 'iFormat Username'
-    end
-  end
+      it 'configures default Client options' do
+        IFormat.configure do |config|
+          config.wsdl     = 'http://example.com/wsdl.xml'
+          config.username = 'john'
+          config.password = 'doe'
+        end
 
-  describe '.password' do
-    it 'returns the default password' do
-      IFormat.password.must_equal nil
-    end
-  end
-
-  describe '.password=' do
-    it 'sets the password' do
-      IFormat.password = 'iFormat Password'
-      IFormat.password.must_equal 'iFormat Password'
-    end
-  end
-
-  describe '.configure' do
-    it 'sets the configuration in a block' do
-      IFormat.configure do |config|
-        config.wsdl     = 'http://example.com/wsdl.xml'
-        config.username = 'iFormat Username'
-        config.password = 'iFormat Password'
+        IFormat.config.wsdl.must_equal     'http://example.com/wsdl.xml'
+        IFormat.config.username.must_equal 'john'
+        IFormat.config.password.must_equal 'doe'
       end
 
-      IFormat.wsdl.must_equal 'http://example.com/wsdl.xml'
-      IFormat.username.must_equal 'iFormat Username'
-      IFormat.password.must_equal 'iFormat Password'
-    end
-  end
+      it 'allows nil option values' do
+        IFormat.configure do |config|
+          config.wsdl     = nil
+          config.username = nil
+          config.password = nil
+        end
 
-  describe '.options' do
-    it 'returns configuration as Hash' do
-      IFormat.configure do |config|
-        config.wsdl     = 'http://example.com/wsdl.xml'
-        config.username = 'iFormat Username'
-        config.password = 'iFormat Password'
+        IFormat.config.wsdl.must_equal     nil
+        IFormat.config.username.must_equal nil
+        IFormat.config.password.must_equal nil
       end
 
-      options = IFormat.options
-      options[:wsdl].must_equal 'http://example.com/wsdl.xml'
-      options[:username].must_equal 'iFormat Username'
-      options[:password].must_equal 'iFormat Password'
     end
+
   end
 
 end
