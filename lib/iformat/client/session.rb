@@ -7,7 +7,10 @@ module IFormat
     module Session
 
       def get_session
-        attrs = request(:get_session, {:username => username, :password => password})
+        attrs = request(:get_session, {
+            :username => username,
+            :password => password
+        })
 
         IFormat::Session.new(attrs)
       end

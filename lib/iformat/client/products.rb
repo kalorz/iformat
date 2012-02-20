@@ -14,8 +14,14 @@ module IFormat
         end
       end
 
-      def get_items_history
-        raise NotImplementedError
+      def get_items_history(since)
+        since = since.xmlschema if since.respond_to?(:xmlschema)
+
+        attrs = session_request(:get_items_history, {
+            :date => since
+        })
+
+        attrs[:result]
       end
 
     end

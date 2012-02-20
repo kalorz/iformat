@@ -1,6 +1,7 @@
 require 'savon'
 require 'iformat/session'
 require 'iformat/error'
+require 'iformat/error/bad_session_id'
 
 module IFormat
 
@@ -37,7 +38,13 @@ module IFormat
       msg    = res[:msg]
 
       if status < 1
-        raise new IFormat::Error(msg, status)
+        case status
+          when IFormat::Error::BAD_SESSION_ID_STATUS
+            raise IFormat::Error::BadSessionId.new(msg, status)
+          else
+            raise IFormat::Error.new(msg, status)
+        end
+
       end
 
       options[:raw] ? response : res[:result]
@@ -46,7 +53,7 @@ module IFormat
     def session_request(method, params = {}, options = {})
       begin
         request(method, params.merge('sessionID' => current_session.id), options)
-      rescue IFormat::Error
+      rescue IFormat::Error::BadSessionId
         request(method, params.merge('sessionID' => current_session(:refresh).id), options)
       end
     end
