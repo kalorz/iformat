@@ -43,12 +43,9 @@ module IFormat
 
       if status < 1
         case status
-          when IFormat::Error::BAD_SESSION_ID_STATUS
-            raise IFormat::Error::BadSessionId.new(msg, status)
-          when IFormat::Error::ORDER_WAITING_FOR_LINKS_STATUS
-            raise IFormat::Error::OrderWaitingForLinks.new(msg, status)
-          else
-            raise IFormat::Error.new(msg, status)
+          when IFormat::Error::BAD_SESSION_ID_STATUS          then raise IFormat::Error::BadSessionId.new(msg, status)
+          when IFormat::Error::ORDER_WAITING_FOR_LINKS_STATUS then raise IFormat::Error::OrderWaitingForLinks.new(msg, status)
+          else raise IFormat::Error.new(msg, status)
         end
 
       end
