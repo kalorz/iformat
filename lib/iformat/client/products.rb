@@ -9,7 +9,7 @@ module IFormat
       def get_products
         products_attrs = session_request(:get_products)
 
-        products_attrs[:products_n][:i_fs_product].map do |attrs|
+        Array.wrap(products_attrs[:products_n][:i_fs_product]).map do |attrs|
           IFormat::Category.new(attrs)
         end
       end

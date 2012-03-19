@@ -2,6 +2,11 @@ require 'savon'
 require 'iformat/configuration'
 require 'iformat/error'
 require 'iformat/error/bad_session_id'
+require 'iformat/error/client_error'
+require 'iformat/error/server_error'
+require 'iformat/error/authorization_error'
+require 'iformat/error/order_not_found'
+require 'iformat/error/order_waiting_for_links'
 require 'iformat/session'
 
 module IFormat
